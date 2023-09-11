@@ -99,6 +99,8 @@
 		FE4002DB2AA5BB7F00A6862D /* tre_i_rad */ = {
 			isa = PBXGroup;
 			children = (
+				FE7BABC32AAF82DC006D0CA5 /* viewControllers */,
+				FE7BABC12AAF82B2006D0CA5 /* model */,
 				FE4002DC2AA5BB7F00A6862D /* AppDelegate.swift */,
 				FE4002DE2AA5BB7F00A6862D /* SceneDelegate.swift */,
 				FE4002E02AA5BB7F00A6862D /* ViewController.swift */,
@@ -125,6 +127,20 @@
 				FE4002FF2AA5BB8100A6862D /* tre_i_radUITestsLaunchTests.swift */,
 			);
 			path = tre_i_radUITests;
+			sourceTree = "<group>";
+		};
+		FE7BABC12AAF82B2006D0CA5 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		FE7BABC32AAF82DC006D0CA5 /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
