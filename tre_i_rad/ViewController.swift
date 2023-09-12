@@ -13,9 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerOneSlot: UILabel!
     @IBOutlet weak var playerTwoSlot: UILabel!
     
-    @IBOutlet weak var toggleBtn: UIButton!
+    @IBOutlet weak var testBtn: UIButton!
+    
+    @IBOutlet weak var a1_btn: UIButton!
+    @IBOutlet weak var a2_btn: UIButton!
+    @IBOutlet weak var a3_btn: UIButton!
     
     @IBOutlet weak var board: UILabel!
+    
     
     var game: Game? // Make it an optional
 
@@ -24,29 +29,46 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         game = Game(viewController: self) // Initialize it here
-        updateBoard()
+        game?.updateBoard(viewController: self)
+        game?.winning(viewController: self)
         
     }
-
-
-    func updateBoard() {
-        let boardText = game?.boardArray.enumerated().map { (index, element) in
-                if index == 2 || index == 5 {
-                return element + "\n"
-                } else {
-                return element
-                }
-            
-            }.joined()
-        board.text = boardText
-        }
     
     @IBAction func switchPlayers(_ sender: Any) {
         game?.switchPlayers(viewController: self)
+    }
+    
+    
+    // Buttons
+    @IBAction func a1ActionBtn(_ sender: Any) {
+        if let value = game?.boardArray[0] {
+            a1_btn.setTitle(value, for: .normal)
+        }
         
     }
     
+    @IBAction func a2ActionBtn(_ sender: Any) {
+        if let value = game?.boardArray[1] {
+            a2_btn.setTitle(value, for: .normal)
+        }
+    }
+    
+    @IBAction func a3ActionBtn(_ sender: Any) {
+        if let value = game?.boardArray[2] {
+            a3_btn.setTitle(value, for: .normal)
+        }
+    }
+    
+    
+    
+    
 }
+
+// 1. Switch players
+// 2. lägg en bricka på spelet
+// 3. utvärdera om spelet fortsätter eller är avgjort
+// 4. Byt spelare
+
 
 /**
  

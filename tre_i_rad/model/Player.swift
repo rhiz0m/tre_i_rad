@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Player {
     var id: Int
     var symbol: String
