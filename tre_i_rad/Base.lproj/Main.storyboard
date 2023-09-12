@@ -31,26 +31,52 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Tdi-U8-09X">
-                                <rect key="frame" x="141" y="326" width="110" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player slot 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRu-Df-W9u">
+                                <rect key="frame" x="151" y="286.33333333333331" width="91" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player slot 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-vS-II0">
+                                <rect key="frame" x="150" y="311.33333333333331" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A85-bF-R8f">
+                                <rect key="frame" x="159" y="382.33333333333331" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="switchPlayers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w1Z-RT-BnP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vRu-Df-W9u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2KX-cT-lsn"/>
                             <constraint firstItem="1h5-sm-kex" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3ec-5H-2Gh"/>
                             <constraint firstItem="1h5-sm-kex" firstAttribute="top" secondItem="P6p-AP-C8o" secondAttribute="bottom" constant="20" id="9pR-PB-OsT"/>
+                            <constraint firstItem="vRu-Df-W9u" firstAttribute="top" secondItem="1h5-sm-kex" secondAttribute="bottom" constant="25" id="IDF-9e-ASt"/>
+                            <constraint firstItem="A85-bF-R8f" firstAttribute="top" secondItem="5hX-vS-II0" secondAttribute="bottom" constant="50" id="IrP-1R-V8v"/>
+                            <constraint firstItem="5hX-vS-II0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JLT-FB-Bcu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ypq-cb-wqo" secondAttribute="bottom" id="L5k-AC-8EY"/>
                             <constraint firstItem="ypq-cb-wqo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RH2-9H-HJX"/>
                             <constraint firstItem="ypq-cb-wqo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SP3-kO-lei"/>
+                            <constraint firstItem="A85-bF-R8f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YIv-il-cAU"/>
                             <constraint firstItem="P6p-AP-C8o" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-220" id="ipy-tD-iy9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ypq-cb-wqo" secondAttribute="trailing" id="pKT-bR-jMG"/>
                             <constraint firstItem="P6p-AP-C8o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r2o-Y9-Led"/>
+                            <constraint firstItem="5hX-vS-II0" firstAttribute="top" secondItem="1h5-sm-kex" secondAttribute="bottom" constant="50" id="waN-iD-70S"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="board" destination="1h5-sm-kex" id="y7C-KO-hLj"/>
+                        <outlet property="game_title" destination="P6p-AP-C8o" id="2In-Fe-5EG"/>
+                        <outlet property="playerOneSlot" destination="vRu-Df-W9u" id="bJa-s2-czo"/>
+                        <outlet property="playerTwoSlot" destination="5hX-vS-II0" id="XSl-7d-vhh"/>
+                        <outlet property="toggleBtn" destination="A85-bF-R8f" id="Kek-Gc-fhm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

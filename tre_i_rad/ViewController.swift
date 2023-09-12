@@ -9,24 +9,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var game_title: UILabel!
+    @IBOutlet weak var playerOneSlot: UILabel!
+    @IBOutlet weak var playerTwoSlot: UILabel!
+    
+    @IBOutlet weak var toggleBtn: UIButton!
+    
     @IBOutlet weak var board: UILabel!
     
+    var game: Game? // Make it an optional
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        game = Game(viewController: self) // Initialize it here
         updateBoard()
-        winning()
+        
     }
 
-    var boardArray = [
-    "1","4","2",
-    "2","1","1",
-    "1","4","1"
-    ]
-    
-    
+
     func updateBoard() {
-        let boardText = boardArray.enumerated().map { (index, element) in
+        let boardText = game?.boardArray.enumerated().map { (index, element) in
                 if index == 2 || index == 5 {
                 return element + "\n"
                 } else {
@@ -37,19 +41,9 @@ class ViewController: UIViewController {
         board.text = boardText
         }
     
-    func winning() {
+    @IBAction func switchPlayers(_ sender: Any) {
+        game?.switchPlayers(viewController: self)
         
-        if boardArray[0] == "1" && boardArray[1] == "1" && boardArray[2] == "1" {
-            print("Horizontal win/first row!")
-        } else if boardArray[3] == "1" && boardArray[4] == "1" && boardArray[5] == "1" {
-            print("Horizontal win/middle row")
-        } else if boardArray[6] == "1" && boardArray[7] == "1" && boardArray[8] == "1" {
-            print("horizontal win/ lowest row!")
-        } else if boardArray[0] == "1" && boardArray[4] == "1" && boardArray[8]  == "1" || boardArray[2] == "1" && boardArray[4] == "1" && boardArray[6] == "1" {
-            print("Diagonal win!")
-        } else {
-            print("no one wins")
-        }
     }
     
 }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F8CE0E93-CDEE-4D1B-8828-3C885F6BC680"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A84067A-7619-4678-BAE5-08A548AA2BAA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tre_i_rad/model/Game.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "Game"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "5A84067A-7619-4678-BAE5-08A548AA2BAA - 7d410957103d2d4b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.Game.deinit"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/model/Game.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "5A84067A-7619-4678-BAE5-08A548AA2BAA - 6737be814c33a648"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.Game.__deallocating_deinit"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/model/Game.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "5A84067A-7619-4678-BAE5-08A548AA2BAA - b5be44b96f1c9fc3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.Game.__allocating_init() -&gt; tre_i_rad.Game"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/model/Game.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "5A84067A-7619-4678-BAE5-08A548AA2BAA - f26bc1e86d6ee5bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.Game.init() -&gt; tre_i_rad.Game"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/model/Game.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
