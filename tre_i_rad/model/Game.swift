@@ -18,24 +18,12 @@ init(viewController: ViewController) {
         }
     
 var playerOne = Player(id: 1, symbol: "X", name: "Player One", wins: 0)
-var playerTwo = Player(id: 2, symbol: "O", name: "Player Two", wins: 0)
 
+var playerTwo = Player(id: 2, symbol: "O", name: "Player Two", wins: 0)
 
 var boardArray = [
     "1","1","1","2","1","2","1","2","2"
 ]
-    
-func updateBoard(viewController: ViewController) {
-        let boardText = boardArray.enumerated().map { (index, element) in
-                if index == 2 || index == 5 {
-                return element + "\n"
-                } else {
-                return element
-                }
-            
-            }.joined()
-        viewController.board.text = boardText
-        }
     
 var isPlaying = 1
 
@@ -56,8 +44,13 @@ func switchPlayers(viewController: ViewController) {
         
     }
 }
+    
+    func setMark() {
+        
+    }
+    
    
-    func winning(viewController: ViewController) {
+    func calcWinner(viewController: ViewController) {
         
         if boardArray[0] == "1" && boardArray[1] == "1" && boardArray[2] == "1" {
             viewController.game_title.text = "Horizontal win/first row!"

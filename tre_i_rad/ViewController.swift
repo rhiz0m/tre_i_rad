@@ -29,8 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         game = Game(viewController: self) // Initialize it here
-        game?.updateBoard(viewController: self)
-        game?.winning(viewController: self)
+        game?.calcWinner(viewController: self)
         
     }
     
@@ -59,7 +58,7 @@ class ViewController: UIViewController {
         }
     }
     
-    
+
     
     
 }
