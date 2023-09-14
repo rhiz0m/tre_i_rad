@@ -84,8 +84,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="B1"/>
                                         <connections>
-                                            <action selector="b1ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4TJ-Vx-81r"/>
-                                            <action selector="b2ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gfk-9s-RIN"/>
+                                            <action selector="b1ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f5a-wh-r3r"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWc-rR-U56">
@@ -93,7 +92,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="B2"/>
                                         <connections>
-                                            <action selector="b2ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sBY-YV-8pi"/>
+                                            <action selector="b2ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hye-pB-ibD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnX-bc-7Uq">
@@ -101,7 +100,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="B3"/>
                                         <connections>
-                                            <action selector="b3ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SZ6-sQ-Hew"/>
+                                            <action selector="b3ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oGO-FH-ABt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -114,7 +113,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="C1"/>
                                         <connections>
-                                            <action selector="c1ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oCw-tW-C0F"/>
+                                            <action selector="c1ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ski-ow-W73"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNJ-zI-nhU">
@@ -122,7 +121,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="C2"/>
                                         <connections>
-                                            <action selector="c2ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Kg-HA-Abu"/>
+                                            <action selector="c2ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uz6-Ig-Txf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="au8-aG-TyB">
@@ -130,7 +129,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="C3"/>
                                         <connections>
-                                            <action selector="c3ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iPV-Eq-iiN"/>
+                                            <action selector="c3ActionBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hB7-Vx-fep"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -139,9 +138,6 @@
                                 <rect key="frame" x="159" y="563" width="75" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <action selector="displayPlayersTurn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w1Z-RT-BnP"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

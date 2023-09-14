@@ -85,8 +85,6 @@ class ViewController: UIViewController {
         }
     }
 
-    
-    
     // Action Buttons
     
     
@@ -102,12 +100,11 @@ class ViewController: UIViewController {
         game?.playersMakeMove(index: 2) // Pass the index of the button clicked
     }
     
-    
     @IBAction func b1ActionBtn(_ sender: Any) {
         game?.playersMakeMove(index: 3)
     }
     
-    @IBAction func b2ActionBtn(_ sender: Any) {
+    @IBAction func b2ActionBtn(_ sender: UIButton) {
         game?.playersMakeMove(index: 4)
     }
     
@@ -123,11 +120,26 @@ class ViewController: UIViewController {
         game?.playersMakeMove(index: 7)
     }
     
-    
     @IBAction func c3ActionBtn(_ sender: Any) {
         game?.playersMakeMove(index: 8)
     }
-        
+    
+    
+    /*
+ 
+    @IBAction func c1ActionBtn(_ sender: UIButton) {
+        game?.playersMakeMove(index: 6) // Pass the index of the button clicked
+    }
+    
+    @IBAction func c2ActionBtn(_ sender: UIButton) {
+        game?.playersMakeMove(index: 7) // Pass the index of the button clicked
+    }
+    
+    @IBAction func c3ActionBtn(_ sender: UIButton) {
+        game?.playersMakeMove(index: 8) // Pass the index of the button clicked
+    }
+     */
+    
 }
 
 // 1. Switch players
