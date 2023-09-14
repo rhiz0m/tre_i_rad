@@ -17,39 +17,68 @@ init(viewController: ViewController) {
             self.viewController = viewController
         }
     
-var playerOne = Player(id: 1, symbol: "X", name: "Player One", wins: 0)
+var playerOne = Player(id: 1, mark: "X", name: "Player One", wins: 0)
 
-var playerTwo = Player(id: 2, symbol: "O", name: "Player Two", wins: 0)
-
+var playerTwo = Player(id: 2, mark: "O", name: "Player Two", wins: 0)
+    
+var isPlaying = 2
 var boardArray = [
-    "1","1","1","2","1","2","1","2","2"
-]
+    "", "", "", "", "", "", "", "", ""]
     
-var isPlaying = 1
-
+        
 func switchPlayers(viewController: ViewController) {
- 
-    switch isPlaying {
-    case 1:
-        viewController.playerOneSlot.text = "\(playerOne.name) is playing!"
-        isPlaying = 2
-        viewController.playerTwoSlot.text = ""
-        
-    case 2:
-        viewController.playerTwoSlot.text = "\(playerTwo.name) is playing!"
-        isPlaying = 1
-        viewController.playerOneSlot.text = ""
-    default:
-        viewController.playerOneSlot.text = "We have no players..."
-        
+        switch isPlaying {
+        case 1:
+            viewController.playerOneSlot.text = "\(playerOne.name) is now playing!"
+            let index = 0
+            if index >= 0 && index < boardArray.count && boardArray[index] == "" {
+                boardArray[index] = String(playerOne.mark)
+                viewController.playerOneMark = playerOne.mark
+                viewController.playerTwoMark = nil // Nollställ playerTwoMark
+            }
+            isPlaying = 2
+            viewController.playerTwoSlot.text = ""
+        case 2:
+            viewController.playerTwoSlot.text = "\(playerTwo.name) is now playing!"
+            let index = 0
+            if index >= 0 && index < boardArray.count && boardArray[index] == "" {
+                boardArray[index] = String(playerTwo.mark)
+                viewController.playerTwoMark = playerTwo.mark
+                viewController.playerOneMark = nil // Nollställ playerOneMark
+            }
+            isPlaying = 1
+            viewController.playerOneSlot.text = ""
+        default:
+            viewController.playerOneSlot.text = "We have no players..."
+        }
+    print(boardArray)
     }
+    
+    func playersMakeMove(index: Int) {
+        guard index >= 0 && index < boardArray.count && boardArray[index] == "" else {
+            // Cell is not empty or index is out of bounds
+            return
+        }
+
+        if isPlaying == 1 {
+            boardArray[index] = playerOne.mark
+            isPlaying = 2
+        } else {
+            boardArray[index] = playerTwo.mark
+            isPlaying = 1
+        }
+
+        // Update UI elements as needed
+        viewController.updateUI()
+    }
+
 }
+
+
+
+
     
-    func setMark() {
-        
-    }
-    
-   
+/*
     func calcWinner(viewController: ViewController) {
         
         if boardArray[0] == "1" && boardArray[1] == "1" && boardArray[2] == "1" {
@@ -63,5 +92,5 @@ func switchPlayers(viewController: ViewController) {
         } else {
             viewController.game_title.text = "no one wins"
         }
-    }
-}
+    } */
+

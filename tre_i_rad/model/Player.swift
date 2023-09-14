@@ -9,7 +9,7 @@ import Foundation
 
 struct Player {
     var id: Int
-    var symbol: String
+    var mark: String
     var name: String
     var wins: Int
 }

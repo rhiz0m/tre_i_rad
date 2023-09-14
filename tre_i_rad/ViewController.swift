@@ -9,58 +9,125 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // Labels
     @IBOutlet weak var game_title: UILabel!
     @IBOutlet weak var playerOneSlot: UILabel!
     @IBOutlet weak var playerTwoSlot: UILabel!
     
+    
+    // Buttons
     @IBOutlet weak var testBtn: UIButton!
     
     @IBOutlet weak var a1_btn: UIButton!
     @IBOutlet weak var a2_btn: UIButton!
     @IBOutlet weak var a3_btn: UIButton!
     
+    @IBOutlet weak var b1_btn: UIButton!
+    @IBOutlet weak var b2_btn: UIButton!
+    @IBOutlet weak var b3_btn: UIButton!
+    
+    
+    @IBOutlet weak var c1_btn: UIButton!
+    @IBOutlet weak var c2_btn: UIButton!
+    @IBOutlet weak var c3_btn: UIButton!
+    
     @IBOutlet weak var board: UILabel!
     
     
     var game: Game? // Make it an optional
+    var playerOneMark: String?
+    var playerTwoMark: String?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         game = Game(viewController: self) // Initialize it here
-        game?.calcWinner(viewController: self)
+        updateUI()
+        //game?.calcWinner(viewController: self)
         
     }
     
-    @IBAction func switchPlayers(_ sender: Any) {
+    @IBAction func displayPlayersTurn(_ sender: Any) {
         game?.switchPlayers(viewController: self)
     }
     
-    
-    // Buttons
-    @IBAction func a1ActionBtn(_ sender: Any) {
-        if let value = game?.boardArray[0] {
-            a1_btn.setTitle(value, for: .normal)
+    func updateUI() {
+        // Update player labels
+        if game?.isPlaying == 1 {
+            playerOneSlot.text = "\(game?.playerOne.name ?? "") is now playing!"
+            playerTwoSlot.text = ""
+        } else {
+            playerTwoSlot.text = "\(game?.playerTwo.name ?? "") is now playing!"
+            playerOneSlot.text = ""
         }
-        
-    }
-    
-    @IBAction func a2ActionBtn(_ sender: Any) {
-        if let value = game?.boardArray[1] {
-            a2_btn.setTitle(value, for: .normal)
-        }
-    }
-    
-    @IBAction func a3ActionBtn(_ sender: Any) {
-        if let value = game?.boardArray[2] {
-            a3_btn.setTitle(value, for: .normal)
+
+        // Update button titles
+        for (index, title) in game?.boardArray.enumerated() ?? [].enumerated() {
+            let button = getButtonForIndex(index)
+            button.setTitle(title, for: .normal)
         }
     }
-    
+
+    func getButtonForIndex(_ index: Int) -> UIButton {
+        switch index {
+        case 0: return a1_btn
+        case 1: return a2_btn
+        case 2: return a3_btn
+        case 3: return b1_btn
+        case 4: return b2_btn
+        case 5: return b3_btn
+        case 6: return c1_btn
+        case 7: return c2_btn
+        case 8: return c3_btn
+
+        default: return UIButton() // Return a default button if index is out of bounds
+        }
+    }
 
     
     
+    // Action Buttons
+    
+    
+    @IBAction func a1ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 0)
+    }
+    
+    @IBAction func a2ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 1)
+    }
+    
+    @IBAction func a3ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 2) // Pass the index of the button clicked
+    }
+    
+    
+    @IBAction func b1ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 3)
+    }
+    
+    @IBAction func b2ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 4)
+    }
+    
+    @IBAction func b3ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 5)
+    }
+    
+    @IBAction func c1ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 6)
+    }
+    
+    @IBAction func c2ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 7)
+    }
+    
+    
+    @IBAction func c3ActionBtn(_ sender: Any) {
+        game?.playersMakeMove(index: 8)
+    }
+        
 }
 
 // 1. Switch players
