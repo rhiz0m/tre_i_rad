@@ -9,52 +9,29 @@ import Foundation
 
 class Game {
     
-var viewController: ViewController // Declare the property
+    var viewController: ViewController // Declare the property
     
     
-init(viewController: ViewController) {
-    // Initialize with the view controller
-            self.viewController = viewController
-        }
-    
-var playerOne = Player(id: 1, mark: "X", name: "Player One", wins: 0)
-
-var playerTwo = Player(id: 2, mark: "O", name: "Player Two", wins: 0)
-    
-var isPlaying = 2
-var boardArray = [
-    "", "", "", "", "", "", "", "", ""]
-    
-        
-func switchPlayers(viewController: ViewController) {
-        switch isPlaying {
-        case 1:
-            viewController.playerOneSlot.text = "\(playerOne.name) is now playing!"
-            let index = 0
-            if index >= 0 && index < boardArray.count && boardArray[index] == "" {
-                boardArray[index] = String(playerOne.mark)
-                viewController.playerOneMark = playerOne.mark
-                viewController.playerTwoMark = nil // Nollställ playerTwoMark
-            }
-            isPlaying = 2
-            viewController.playerTwoSlot.text = ""
-        case 2:
-            viewController.playerTwoSlot.text = "\(playerTwo.name) is now playing!"
-            let index = 0
-            if index >= 0 && index < boardArray.count && boardArray[index] == "" {
-                boardArray[index] = String(playerTwo.mark)
-                viewController.playerTwoMark = playerTwo.mark
-                viewController.playerOneMark = nil // Nollställ playerOneMark
-            }
-            isPlaying = 1
-            viewController.playerOneSlot.text = ""
-        default:
-            viewController.playerOneSlot.text = "We have no players..."
-        }
-    print(boardArray)
+    init(viewController: ViewController) {
+        // Initialize with the view controller
+        self.viewController = viewController
     }
     
+    var playerOne = Player(id: 1, mark: "X", name: "Player One", wins: 0)
+    
+    var playerTwo = Player(id: 2, mark: "O", name: "Player Two", wins: 0)
+    
+    var isPlaying = 1
+    var boardArray = [
+        "", "", "", "", "", "", "", "", ""]
+    
+    
     func playersMakeMove(index: Int) {
+        
+        if calculateWinner() || !boardArray.contains("") {
+               return
+           } // Stop the game
+        
         guard index >= 0 && index < boardArray.count && boardArray[index] == "" else {
             // Cell is not empty or index is out of bounds
             return
@@ -62,35 +39,53 @@ func switchPlayers(viewController: ViewController) {
 
         if isPlaying == 1 {
             boardArray[index] = playerOne.mark
-            isPlaying = 2
         } else {
             boardArray[index] = playerTwo.mark
-            isPlaying = 1
         }
 
         // Update UI elements as needed
         viewController.updateUI()
+
+        let hasWon = calculateWinner()
+
+        if hasWon {
+            if boardArray[index] == playerOne.mark {
+                viewController.togglePlayers.text = "\(playerOne.name) wins!"
+            } else if boardArray[index] == playerTwo.mark {
+                viewController.togglePlayers.text = "\(playerTwo.name) wins!"
+            }
+            return // Return immediately after setting the text
+        } else if !boardArray.contains("") {
+            viewController.togglePlayers.text = "No One Wins..."
+            return // Return immediately if there's no winner
+        } else {
+            isPlaying = isPlaying == 1 ? 2 : 1 // toggle players as long as the game keeps going
+        }
+        
+      
+    }
+    
+
+    func calculateWinner() -> Bool {
+        let winningCombinations: [[Int]] = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horisontella vinster
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertikala vinster
+            [0, 4, 8], [2, 4, 6] // Diagonala vinster
+        ]
+
+        for combination in winningCombinations {
+            let a = combination[0]
+            let b = combination[1]
+            let c = combination[2]
+
+            if boardArray[a] == boardArray[b] && boardArray[b] == boardArray[c] && !boardArray[a].isEmpty {
+                if boardArray[a] == playerOne.mark {
+                    return true
+                }
+            }
+        }
+        return false
+        
     }
 
 }
-
-
-
-
-    
-/*
-    func calcWinner(viewController: ViewController) {
-        
-        if boardArray[0] == "1" && boardArray[1] == "1" && boardArray[2] == "1" {
-            viewController.game_title.text = "Horizontal win/first row!"
-        } else if boardArray[3] == "1" && boardArray[4] == "1" && boardArray[5] == "1" {
-            viewController.game_title.text =  "Horizontal win/middle row"
-        } else if boardArray[6] == "1" && boardArray[7] == "1" && boardArray[8] == "1" {
-            viewController.game_title.text = "horizontal win/ lowest row!"
-        } else if boardArray[0] == "1" && boardArray[4] == "1" && boardArray[8]  == "1" || boardArray[2] == "1" && boardArray[4] == "1" && boardArray[6] == "1" {
-            viewController.game_title.text = "Diagonal win!"
-        } else {
-            viewController.game_title.text = "no one wins"
-        }
-    } */
-

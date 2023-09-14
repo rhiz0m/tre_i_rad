@@ -11,9 +11,9 @@ class ViewController: UIViewController {
 
     // Labels
     @IBOutlet weak var game_title: UILabel!
-    @IBOutlet weak var playerOneSlot: UILabel!
+    @IBOutlet weak var togglePlayers: UILabel!
     @IBOutlet weak var playerTwoSlot: UILabel!
-    
+    @IBOutlet weak var gameStatus: UILabel!
     
     // Buttons
     @IBOutlet weak var testBtn: UIButton!
@@ -43,23 +43,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         game = Game(viewController: self) // Initialize it here
-        updateUI()
-        //game?.calcWinner(viewController: self)
-        
+        updateUI()        
     }
-    
-    @IBAction func displayPlayersTurn(_ sender: Any) {
-        game?.switchPlayers(viewController: self)
-    }
+
     
     func updateUI() {
         // Update player labels
         if game?.isPlaying == 1 {
-            playerOneSlot.text = "\(game?.playerOne.name ?? "") is now playing!"
-            playerTwoSlot.text = ""
+            togglePlayers.text = "\(game?.playerOne.name ?? "") is now playing!"
+
         } else {
-            playerTwoSlot.text = "\(game?.playerTwo.name ?? "") is now playing!"
-            playerOneSlot.text = ""
+            togglePlayers.text = "\(game?.playerTwo.name ?? "") is now playing!"
+      
         }
 
         // Update button titles
