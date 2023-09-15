@@ -48,9 +48,23 @@ class ViewController: UIViewController {
 
     
     func updateUI() {
+        /*
+        let textColor = UIColor.black
+        let fontSize: CGFloat = 40.0
+        let fontWeight = UIFont.Weight.bold
+        let fontName = "NoteWorthy"
+        
+        let titleAttributes : [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize, weight: fontWeight), .foregroundColor: textColor,
+        ]
+    
+    */
+        
+        
         // Update player labels
         if game?.isPlaying == 1 {
             togglePlayers.text = "\(game?.playerOne.name ?? "") is now playing!"
+            
 
         } else {
             togglePlayers.text = "\(game?.playerTwo.name ?? "") is now playing!"
@@ -119,29 +133,7 @@ class ViewController: UIViewController {
         game?.playersMakeMove(index: 8)
     }
     
-    
-    /*
- 
-    @IBAction func c1ActionBtn(_ sender: UIButton) {
-        game?.playersMakeMove(index: 6) // Pass the index of the button clicked
-    }
-    
-    @IBAction func c2ActionBtn(_ sender: UIButton) {
-        game?.playersMakeMove(index: 7) // Pass the index of the button clicked
-    }
-    
-    @IBAction func c3ActionBtn(_ sender: UIButton) {
-        game?.playersMakeMove(index: 8) // Pass the index of the button clicked
-    }
-     */
-    
 }
-
-// 1. Switch players
-// 2. lägg en bricka på spelet
-// 3. utvärdera om spelet fortsätter eller är avgjort
-// 4. Byt spelare
-
 
 /**
  

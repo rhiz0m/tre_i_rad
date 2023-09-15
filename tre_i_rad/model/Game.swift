@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Game {
     
@@ -61,8 +62,6 @@ class Game {
         } else {
             isPlaying = isPlaying == 1 ? 2 : 1 // toggle players as long as the game keeps going
         }
-        
-      
     }
     
 
@@ -79,7 +78,14 @@ class Game {
             let c = combination[2]
 
             if boardArray[a] == boardArray[b] && boardArray[b] == boardArray[c] && !boardArray[a].isEmpty {
-                if boardArray[a] == playerOne.mark {
+                if boardArray[a] == playerOne.mark || boardArray[a] == playerTwo.mark {
+                    
+                    let highLightBtns = [a, b, c]
+                    for index in highLightBtns {
+                        let button = viewController.getButtonForIndex(index)
+                        button.tintColor = UIColor.cyan
+                        button.setTitleColor(UIColor.black, for: .normal)
+                    }
                     return true
                 }
             }
