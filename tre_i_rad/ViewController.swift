@@ -48,19 +48,7 @@ class ViewController: UIViewController {
 
     
     func updateUI() {
-        /*
-        let textColor = UIColor.black
-        let fontSize: CGFloat = 40.0
-        let fontWeight = UIFont.Weight.bold
-        let fontName = "NoteWorthy"
-        
-        let titleAttributes : [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize, weight: fontWeight), .foregroundColor: textColor,
-        ]
-    
-    */
-        
-        
+                
         // Update player labels
         if game?.isPlaying == 1 {
             togglePlayers.text = "\(game?.playerOne.name ?? "") is now playing!"
@@ -133,6 +121,25 @@ class ViewController: UIViewController {
         game?.playersMakeMove(index: 8)
     }
     
+    @IBAction func resetBtn(_ sender: UIButton) {
+
+        game?.boardArray = [
+            "", "", "", "", "", "", "", "", ""]
+        
+        // Återställ knapparna
+        for index in 0..<9 {
+            let button = getButtonForIndex(index)
+            button.setTitleColor(UIColor.white, for: .normal)
+            button.tintColor = UIColor.black
+        }
+        
+        updateUI()
+        
+        if let clearBoard = game?.boardArray{
+            print(clearBoard)
+        }
+       
+    }
 }
 
 /**

@@ -64,12 +64,11 @@ class Game {
         }
     }
     
-
     func calculateWinner() -> Bool {
         let winningCombinations: [[Int]] = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horisontella vinster
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertikala vinster
-            [0, 4, 8], [2, 4, 6] // Diagonala vinster
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal wins
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical wins
+            [0, 4, 8], [2, 4, 6]             // Diagonal wins
         ]
 
         for combination in winningCombinations {
@@ -91,7 +90,6 @@ class Game {
             }
         }
         return false
-        
     }
 
 }
