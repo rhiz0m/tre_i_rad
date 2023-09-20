@@ -10,10 +10,10 @@ import UIKit
 class ViewController: UIViewController {
 
     // Labels
-    @IBOutlet weak var game_title: UILabel!
-    @IBOutlet weak var togglePlayers: UILabel!
-    @IBOutlet weak var playerTwoSlot: UILabel!
-    @IBOutlet weak var gameStatus: UILabel!
+    @IBOutlet weak var gameTitleLbl: UILabel!
+    @IBOutlet weak var playerOneLbl: UILabel!
+    @IBOutlet weak var playerTwoLabl: UILabel!
+    @IBOutlet weak var turnsLbl: UILabel!
     
     // Buttons
     @IBOutlet weak var testBtn: UIButton!
@@ -51,11 +51,11 @@ class ViewController: UIViewController {
                 
         // Update player labels
         if game?.isPlaying == 1 {
-            togglePlayers.text = "\(game?.playerOne.name ?? "") is now playing!"
+            playerOneLbl.text = "\(game?.playerOne.name ?? "") is now playing!"
             
 
         } else {
-            togglePlayers.text = "\(game?.playerTwo.name ?? "") is now playing!"
+            playerOneLbl.text = "\(game?.playerTwo.name ?? "") is now playing!"
       
         }
 
@@ -83,7 +83,6 @@ class ViewController: UIViewController {
     }
 
     // Action Buttons
-    
     
     @IBAction func a1ActionBtn(_ sender: Any) {
         game?.playersMakeMove(index: 0)
@@ -134,10 +133,6 @@ class ViewController: UIViewController {
         }
         
         updateUI()
-        
-        if let clearBoard = game?.boardArray{
-            print(clearBoard)
-        }
        
     }
 }
