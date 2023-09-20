@@ -51,13 +51,13 @@ class Game {
 
         if hasWon {
             if boardArray[index] == playerOne.mark {
-                viewController.playerOneLbl.text = "\(playerOne.name) wins!"
+                viewController.currentPlayerLbl.text = "\(playerOne.name) wins!"
             } else if boardArray[index] == playerTwo.mark {
-                viewController.playerOneLbl.text = "\(playerTwo.name) wins!"
+                viewController.currentPlayerLbl.text = "\(playerTwo.name) wins!"
             }
             return // Return immediately after setting the text
         } else if !boardArray.contains("") {
-            viewController.playerOneLbl.text = "No One Wins..."
+            viewController.currentPlayerLbl.text = "No One Wins..."
             return // Return immediately if there's no winner
         } else {
             isPlaying = isPlaying == 1 ? 2 : 1 // toggle players as long as the game keeps going

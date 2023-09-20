@@ -11,8 +11,9 @@ class ViewController: UIViewController {
 
     // Labels
     @IBOutlet weak var gameTitleLbl: UILabel!
+    @IBOutlet weak var currentPlayerLbl: UILabel!
     @IBOutlet weak var playerOneLbl: UILabel!
-    @IBOutlet weak var playerTwoLabl: UILabel!
+    @IBOutlet weak var playerTwoLbl: UILabel!
     @IBOutlet weak var turnsLbl: UILabel!
     
     // Buttons
@@ -51,11 +52,11 @@ class ViewController: UIViewController {
                 
         // Update player labels
         if game?.isPlaying == 1 {
-            playerOneLbl.text = "\(game?.playerOne.name ?? "") is now playing!"
+            currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing!"
             
 
         } else {
-            playerOneLbl.text = "\(game?.playerTwo.name ?? "") is now playing!"
+            currentPlayerLbl.text = "\(game?.playerTwo.name ?? "") is now playing!"
       
         }
 
