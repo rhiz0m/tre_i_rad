@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ypq-cb-wqo">
-                                <rect key="frame" x="0.0" y="59" width="393" height="650"/>
+                                <rect key="frame" x="0.0" y="109" width="393" height="650"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Tic Tac Toe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6p-AP-C8o">
                                         <rect key="frame" x="136.66666666666666" y="0.0" width="119.66666666666666" height="30"/>
@@ -227,7 +227,7 @@
                         <constraints>
                             <constraint firstItem="ypq-cb-wqo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="09D-Zn-eHP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="right" secondItem="ypq-cb-wqo" secondAttribute="rightMargin" id="WyN-Cg-T2a"/>
-                            <constraint firstItem="ypq-cb-wqo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YU3-kK-20B"/>
+                            <constraint firstItem="ypq-cb-wqo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="qv2-8h-yCg"/>
                         </constraints>
                     </view>
                     <connections>
