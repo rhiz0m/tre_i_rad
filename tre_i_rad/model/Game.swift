@@ -18,16 +18,18 @@ class Game {
         self.viewController = viewController
     }
     
-    var playerOne = Player(id: 1, mark: "X", name: "Player One", wins: 0)
+    var playerOne = Player(name: "Player One", mark: "X", wins: 0)
     
-    var playerTwo = Player(id: 2, mark: "O", name: "Player Two", wins: 0)
+    var playerTwo = Player(name: "Player Two", mark: "O",  wins: 0)
     
     var isPlaying = 1
-    var boardArray = [
-        "", "", "", "", "", "", "", "", ""]
+    var boardArray = ["", "", "", "", "", "", "", "", ""]
+    
+    var totalWins = 0
+    var draws = 0
     
     
-    func playersMakeMove(index: Int) {
+    func playersMove(index: Int) {
         
         if calculateWinner() || !boardArray.contains("") {
                return
@@ -49,20 +51,45 @@ class Game {
 
         let hasWon = calculateWinner()
 
+        
         if hasWon {
+          
             if boardArray[index] == playerOne.mark {
+                playerOne.wins += 1
                 viewController.currentPlayerLbl.text = "\(playerOne.name) wins!"
+                
             } else if boardArray[index] == playerTwo.mark {
+                playerTwo.wins += 1
                 viewController.currentPlayerLbl.text = "\(playerTwo.name) wins!"
             }
+            
+            totalWins = playerOne.wins + playerTwo.wins + draws
+            viewController.drawsLbl.text = "Draws: \(draws) / \(totalWins)"
+    
+            viewController.playerOneLbl.text = "Player One. Wins: \(playerOne.wins) / \(totalWins)"
+            viewController.playerTwoLbl.text = "Player Two. Wins: \(playerTwo.wins) / \(totalWins)"
+            
             return // Return immediately after setting the text
+            
         } else if !boardArray.contains("") {
-            viewController.currentPlayerLbl.text = "No One Wins..."
+            // Update draws
+            draws += 1
+            totalWins = playerOne.wins + playerTwo.wins + draws
+            viewController.drawsLbl.text = "Draws: \(draws) / \(totalWins)"
+            viewController.currentPlayerLbl.text = "No One Wins. It's a draw!"
+            // Update players
+            viewController.playerOneLbl.text = "Player One. Wins: \(playerOne.wins) / \(totalWins)"
+            viewController.playerTwoLbl.text = "Player Two. Wins: \(playerTwo.wins) / \(totalWins)"
+            
             return // Return immediately if there's no winner
         } else {
             isPlaying = isPlaying == 1 ? 2 : 1 // toggle players as long as the game keeps going
         }
+        
     }
+    
+    
+    
     
     func calculateWinner() -> Bool {
         let winningCombinations: [[Int]] = [
@@ -90,6 +117,10 @@ class Game {
             }
         }
         return false
+    }
+    
+    func AI() {
+        
     }
 
 }

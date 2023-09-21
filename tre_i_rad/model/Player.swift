@@ -8,9 +8,8 @@
 import Foundation
 
 struct Player {
-    var id: Int
-    var mark: String
     var name: String
+    var mark: String
     var wins: Int
 }
 

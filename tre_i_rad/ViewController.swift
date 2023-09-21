@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentPlayerLbl: UILabel!
     @IBOutlet weak var playerOneLbl: UILabel!
     @IBOutlet weak var playerTwoLbl: UILabel!
-    @IBOutlet weak var turnsLbl: UILabel!
+    @IBOutlet weak var drawsLbl: UILabel!
     
     // Buttons
     @IBOutlet weak var testBtn: UIButton!
@@ -82,58 +82,72 @@ class ViewController: UIViewController {
         default: return UIButton() // Return a default button if index is out of bounds
         }
     }
-
-    // Action Buttons
     
-    @IBAction func a1ActionBtn(_ sender: Any) {
-        game?.playersMakeMove(index: 0)
-    }
-    
-    @IBAction func a2ActionBtn(_ sender: Any) {
-        game?.playersMakeMove(index: 1)
-    }
-    
-    @IBAction func a3ActionBtn(_ sender: Any) {
-        game?.playersMakeMove(index: 2) // Pass the index of the button clicked
-    }
-    
-    @IBAction func b1ActionBtn(_ sender: Any) {
-        game?.playersMakeMove(index: 3)
-    }
-    
-    @IBAction func b2ActionBtn(_ sender: UIButton) {
-        game?.playersMakeMove(index: 4)
-    }
-    
-    @IBAction func b3ActionBtn(_ sender: Any) {
-        game?.playersMakeMove(index: 5)
-    }
-    
-    @IBAction func c1ActionBtn(_ sender: Any) {
-        game?.playersMakeMove(index: 6)
-    }
-    
-    @IBAction func c2ActionBtn(_ sender: Any) {
-        game?.playersMakeMove(index: 7)
-    }
-    
-    @IBAction func c3ActionBtn(_ sender: Any) {
-        game?.playersMakeMove(index: 8)
-    }
-    
-    @IBAction func resetBtn(_ sender: UIButton) {
-
+    func reset() {
         game?.boardArray = [
             "", "", "", "", "", "", "", "", ""]
-        
         // Återställ knapparna
         for index in 0..<9 {
             let button = getButtonForIndex(index)
             button.setTitleColor(UIColor.white, for: .normal)
             button.tintColor = UIColor.black
         }
-        
         updateUI()
+    }
+
+    // Action Buttons
+    
+    @IBAction func a1ActionBtn(_ sender: Any) {
+        game?.playersMove(index: 0)
+    }
+    
+    @IBAction func a2ActionBtn(_ sender: Any) {
+        game?.playersMove(index: 1)
+    }
+    
+    @IBAction func a3ActionBtn(_ sender: Any) {
+        game?.playersMove(index: 2) // Pass the index of the button clicked
+    }
+    
+    @IBAction func b1ActionBtn(_ sender: Any) {
+        game?.playersMove(index: 3)
+    }
+    
+    @IBAction func b2ActionBtn(_ sender: UIButton) {
+        game?.playersMove(index: 4)
+    }
+    
+    @IBAction func b3ActionBtn(_ sender: Any) {
+        game?.playersMove(index: 5)
+    }
+    
+    @IBAction func c1ActionBtn(_ sender: Any) {
+        game?.playersMove(index: 6)
+    }
+    
+    @IBAction func c2ActionBtn(_ sender: Any) {
+        game?.playersMove(index: 7)
+    }
+    
+    @IBAction func c3ActionBtn(_ sender: Any) {
+        game?.playersMove(index: 8)
+    }
+    
+    @IBAction func rematchBtn(_ sender: UIButton) {
+        reset()
+    }
+    
+    
+    @IBAction func resetBtn(_ sender: UIButton) {
+       reset()
+        game?.playerOne.wins = 0
+        game?.playerTwo.wins = 0
+        game?.totalWins = 0
+        drawsLbl.text = "Total: 0 "
+        currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing"
+        playerOneLbl.text = "Player One. Wins: 0 / 0"
+        playerTwoLbl.text = "Player Two. Wins: 0 / 0"
+        
        
     }
 }
