@@ -79,10 +79,8 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="54y-N7-NOk"/>
                                                     <constraint firstAttribute="width" constant="100" id="84L-hc-EI4"/>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="QQ4-tf-S5W"/>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="gx1-VZ-HCJ"/>
                                                     <constraint firstAttribute="height" constant="100" id="n2b-fQ-Fn0"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="rdn-8h-wOf"/>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="90" id="tQw-BX-ffO"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="wSQ-aK-IcB"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
