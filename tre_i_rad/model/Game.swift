@@ -105,19 +105,38 @@ class Game {
 
             if boardArray[a] == boardArray[b] && boardArray[b] == boardArray[c] && !boardArray[a].isEmpty {
                 if boardArray[a] == playerOne.mark || boardArray[a] == playerTwo.mark {
-                    
-                    let highLightBtns = [a, b, c]
-                    for index in highLightBtns {
-                        let button = viewController.getButtonForIndex(index)
-                        button.tintColor = UIColor.cyan
-                        button.setTitleColor(UIColor.black, for: .normal)
-                    }
+                        animateWinningCombination(winningCombination: combination)
                     return true
                 }
             }
         }
         return false
     }
+    
+    func animateWinningCombination(winningCombination: [Int]) {
+        for index in winningCombination {
+            let button = viewController.getButtonForIndex(index)
+            
+            // Set new font size
+            let newFont = UIFont.systemFont(ofSize: 20.0)
+            
+            // Adding animation
+            UIView.transition(with: button, duration: 1, options: .transitionCrossDissolve, animations: {
+                button.setTitleColor(UIColor.black, for: .normal)
+                button.tintColor = UIColor.cyan
+                
+            }, completion: nil)
+            // Change the font size after animation
+            button.titleLabel?.font = newFont
+        }
+    }
+
+
+
+
+
+
+
     
     func AI() {
         

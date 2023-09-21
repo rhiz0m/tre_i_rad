@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ypq-cb-wqo">
-                                <rect key="frame" x="0.0" y="109" width="393" height="700.33333333333337"/>
+                                <rect key="frame" x="0.0" y="109" width="393" height="665"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Tic Tac Toe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6p-AP-C8o">
                                         <rect key="frame" x="117.33333333333333" y="0.0" width="158.66666666666669" height="30"/>
@@ -64,14 +64,8 @@
                                         <color key="textColor" red="0.81333051570000003" green="1" blue="0.95039135279999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="••••••••••••••" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rme-iC-Vw1">
-                                        <rect key="frame" x="143.33333333333334" y="225" width="106.33333333333334" height="20.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="czp-Og-7vr">
-                                        <rect key="frame" x="36.666666666666657" y="260.33333333333331" width="320" height="100"/>
+                                        <rect key="frame" x="36.666666666666657" y="225" width="320" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFE-qo-S74">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -141,7 +135,7 @@
                                         </variation>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQI-VC-LuS">
-                                        <rect key="frame" x="36.666666666666657" y="375.33333333333331" width="320" height="100"/>
+                                        <rect key="frame" x="36.666666666666657" y="340" width="320" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJG-dr-rms">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -201,7 +195,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BB6-Lk-i1P">
-                                        <rect key="frame" x="36.666666666666657" y="490.33333333333337" width="320" height="100"/>
+                                        <rect key="frame" x="36.666666666666657" y="455" width="320" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXA-oF-RrQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -260,7 +254,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSS-GC-3mv">
-                                        <rect key="frame" x="121.66666666666669" y="605.33333333333337" width="150" height="40"/>
+                                        <rect key="frame" x="121.66666666666669" y="570" width="150" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KHh-Yv-rmh"/>
                                             <constraint firstAttribute="width" constant="150" id="RTf-PL-sIn"/>
@@ -281,7 +275,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A85-bF-R8f">
-                                        <rect key="frame" x="121.66666666666669" y="660.33333333333337" width="150" height="40"/>
+                                        <rect key="frame" x="121.66666666666669" y="625" width="150" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="vXr-pA-ovM"/>
                                             <constraint firstAttribute="width" constant="150" id="vgE-af-7xM"/>
