@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var drawsLbl: UILabel!
     
     // Buttons
-    @IBOutlet weak var testBtn: UIButton!
+    @IBOutlet weak var resetBtn: UIButton!
+    @IBOutlet weak var rematchBtn: UIButton!
     
     @IBOutlet weak var a1_btn: UIButton!
     @IBOutlet weak var a2_btn: UIButton!
@@ -27,27 +28,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var b2_btn: UIButton!
     @IBOutlet weak var b3_btn: UIButton!
     
-    
     @IBOutlet weak var c1_btn: UIButton!
     @IBOutlet weak var c2_btn: UIButton!
     @IBOutlet weak var c3_btn: UIButton!
     
-    @IBOutlet weak var board: UILabel!
-    
-    
     var game: Game? // Make it an optional
-    var playerOneMark: String?
-    var playerTwoMark: String?
-
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        game = Game(viewController: self) // Initialize it here
-        updateUI()        
+        game = Game(viewController: self)
+        updateUI()
+  
     }
-
-    
+        
     func updateUI() {
                 
         // Update player labels
@@ -66,7 +60,7 @@ class ViewController: UIViewController {
             button.setTitle(title, for: .normal)
         }
     }
-
+    
     func getButtonForIndex(_ index: Int) -> UIButton {
         switch index {
         case 0: return a1_btn
@@ -133,17 +127,17 @@ class ViewController: UIViewController {
         game?.playersMove(index: 8)
     }
     
-    @IBAction func rematchBtn(_ sender: UIButton) {
+    @IBAction func rematchActionBtn(_ sender: UIButton) {
         reset()
     }
     
     
-    @IBAction func resetBtn(_ sender: UIButton) {
+    @IBAction func resetActionBtn(_ sender: UIButton) {
        reset()
         game?.playerOne.wins = 0
         game?.playerTwo.wins = 0
         game?.totalWins = 0
-        drawsLbl.text = "Total: 0 "
+        drawsLbl.text = "Draws: 0 / 0 "
         currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing"
         playerOneLbl.text = "Player One. Wins: 0 / 0"
         playerTwoLbl.text = "Player Two. Wins: 0 / 0"

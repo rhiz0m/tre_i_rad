@@ -114,22 +114,50 @@ class Game {
     }
     
     func animateWinningCombination(winningCombination: [Int]) {
-        for index in winningCombination {
-            let button = viewController.getButtonForIndex(index)
+        // Base case: If there are no more buttons to animate, exit the recursion
+        guard !winningCombination.isEmpty else {
+            return
+        }
+        
+        let index = winningCombination[0]
+        let button = viewController.getButtonForIndex(index)
+        
+        // Store the original background color and transform
+        let originalBackgroundColor = button.backgroundColor
+        let originalTransform = button.transform
+        
+        // Animation step
+        UIView.animate(withDuration: 0.7, animations: {
+            // Set the color of the current button
+            button.setTitleColor(UIColor.black, for: .normal)
+            button.tintColor = UIColor.cyan
             
-            // Set new font size
-            let newFont = UIFont.systemFont(ofSize: 20.0)
+            // Apply a scale transform to create a bounce effect
+            button.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+        }) { _ in
+            // Restore the original background color and transform
+            button.backgroundColor = originalBackgroundColor
+            button.transform = originalTransform
             
-            // Adding animation
-            UIView.transition(with: button, duration: 1, options: .transitionCrossDissolve, animations: {
-                button.setTitleColor(UIColor.black, for: .normal)
-                button.tintColor = UIColor.cyan
-                
-            }, completion: nil)
-            // Change the font size after animation
-            button.titleLabel?.font = newFont
+            // Remove the current button from the list
+            var updatedCombination = winningCombination
+            updatedCombination.removeFirst()
+            
+            // Call the function recursively with the updated list
+            self.animateWinningCombination(winningCombination: updatedCombination)
         }
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
