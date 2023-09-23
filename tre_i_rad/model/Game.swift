@@ -127,7 +127,7 @@ class Game {
         let originalTransform = button.transform
         
         // Animation step
-        UIView.animate(withDuration: 0.7, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             // Set the color of the current button
             button.setTitleColor(UIColor.black, for: .normal)
             button.tintColor = UIColor.cyan
