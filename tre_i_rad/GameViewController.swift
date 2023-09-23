@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
 
     // Labels
     @IBOutlet weak var gameTitleLbl: UILabel!

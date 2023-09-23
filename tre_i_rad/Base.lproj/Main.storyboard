@@ -37,7 +37,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Player 1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6L-tG-D1L">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player 1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6L-tG-D1L">
                                         <rect key="frame" x="96.666666666666686" y="140" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="2PE-6M-dNr"/>
@@ -46,7 +46,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Player 2" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rqR-g6-O3q">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player 2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rqR-g6-O3q">
                                         <rect key="frame" x="96.666666666666686" y="200" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Pte-8Q-bll"/>
@@ -79,6 +79,9 @@
                                             <color key="baseForegroundColor" red="0.45490196350000001" green="0.97647058959999999" blue="0.99215686319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="onStartGame:" destination="ucQ-9J-dhS" eventType="touchUpInside" id="xbx-cL-eIC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -92,7 +95,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="bdV-oS-fbU"/>
+                        <outlet property="playerOneTextFeild" destination="Z6L-tG-D1L" id="8DI-cR-9ez"/>
+                        <outlet property="playerTwoTextFeild" destination="rqR-g6-O3q" id="d6n-Ly-NcE"/>
+                        <outlet property="startGameBtn" destination="vi7-vk-8FZ" id="nzq-Xq-S0m"/>
+                        <outlet property="topInfoLbl" destination="277-NC-Vzm" id="XTg-LQ-l7i"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toGameScreen" id="f2p-j3-jSY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERQ-Vs-bfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -102,7 +109,7 @@
         <!--GameViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="GameViewController" customClass="ViewController" customModule="tre_i_rad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="GameViewController" customClass="GameViewController" customModule="tre_i_rad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

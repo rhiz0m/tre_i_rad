@@ -10,17 +10,17 @@ import UIKit
 
 class Game {
     
-    var viewController: ViewController // Declare the property
+    var viewController: GameViewController // Declare the property
     
     
-    init(viewController: ViewController) {
+    init(viewController: GameViewController) {
         // Initialize with the view controller
         self.viewController = viewController
     }
     
-    var playerOne = Player(name: "Player One", mark: "X", wins: 0)
+    var playerOne = Player(name: "", mark: "X", wins: 0)
     
-    var playerTwo = Player(name: "Player Two", mark: "O",  wins: 0)
+    var playerTwo = Player(name: "", mark: "O",  wins: 0)
     
     var isPlaying = 1
     var boardArray = ["", "", "", "", "", "", "", "", ""]
