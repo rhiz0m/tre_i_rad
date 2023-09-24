@@ -32,14 +32,32 @@ class GameViewController: UIViewController {
     @IBOutlet weak var c2_btn: UIButton!
     @IBOutlet weak var c3_btn: UIButton!
     
-    var game: Game? // Make it an optional
+    var game: Game?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        game = Game(viewController: self)
+        // Create the Game instance with player names from StartViewController
+        game = Game(gameViewController: self, playerOneName: "", playerTwoName: "")
+        
+        // Now you can set the player names from StartViewController
+        if let startViewController = presentingViewController as? StartViewController {
+            game?.playerOne.name = startViewController.playerOneTextFeild.text ?? "Player 1"
+            game?.playerTwo.name = startViewController.playerTwoTextFeild.text ?? "Player 2"
+        }
+        
+        // Update the player labels
+        updatePlayerLabels()
         updateUI()
   
+    }
+    
+    
+    
+    
+    func updatePlayerLabels() {
+        playerOneLbl.text = "\(game?.playerOne.name ?? "Player 1"). Wins: \(game?.playerOne.wins ?? 0) / \(game?.totalWins ?? 0)"
+        playerTwoLbl.text = "\(game?.playerTwo.name ?? "Player 2"). Wins: \(game?.playerTwo.wins ?? 0) / \(game?.totalWins ?? 0)"
     }
         
     func updateUI() {
@@ -51,7 +69,7 @@ class GameViewController: UIViewController {
 
         } else {
             currentPlayerLbl.text = "\(game?.playerTwo.name ?? "") is now playing!"
-      
+            
         }
 
         // Update button titles
@@ -86,7 +104,9 @@ class GameViewController: UIViewController {
             button.setTitleColor(UIColor.white, for: .normal)
             button.tintColor = UIColor.black
         }
+        
         updateUI()
+        
     }
 
     // Action Buttons
@@ -129,6 +149,7 @@ class GameViewController: UIViewController {
     
     @IBAction func rematchActionBtn(_ sender: UIButton) {
         reset()
+        updatePlayerLabels()
     }
     
     
@@ -139,35 +160,46 @@ class GameViewController: UIViewController {
         game?.totalWins = 0
         drawsLbl.text = "Draws: 0 / 0 "
         currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing"
-        playerOneLbl.text = "Player One. Wins: 0 / 0"
-        playerTwoLbl.text = "Player Two. Wins: 0 / 0"
-        
-       
+        playerOneLbl.text = "\(game?.playerOne.name ?? ""). Wins: 0 / 0"
+        playerTwoLbl.text = "\(game?.playerTwo.name ?? "") Two. Wins: 0 / 0"
+    
     }
 }
 
-/**
- 
- Godkänt:
- 
- • Spelet måste vara spelbart mellan två mänskliga spelare som kan turas om.
- • Spelet ska kontrollera och meddela vilken spelare som vunnit eller om spelet slutat
- oavgjort
- • Spelet ska vid varje drag kontrollera a6 den valda rutan är tomt, så a6 man inte kan
- lägga e6 X eller O på en ruta som redan innehåller e6 X eller O.
- • När en spelare vunnit så ska spelet avslutas, och anMngen börja om från början
- alternaMvt gå Mllbaka Mll en startmeny (om ni väljer a6 lägga en startmeny)
- • All er kod ska vara skriven på engelska. Det vill säga variabelnamn, kommentarer,
- klassnamn samt metodnamn.
- • Projektet skall läggas upp som e6 GitHub repository, och länkas Mll det när det
- lämnas in.
- 
- VG:
- 
- • Spelarna kan ange sina namn och vid varje drag skriva ut vems tur det är.
- • Spelet ska räkna och hålla koll på hur många vinster en spelare har totalt.
- • Koden håller sig Mll MVC mönstret, d.v.s. a6 separera eran logik från vyn.
- • Komple6 Github historik från a6 ni skapat projektet Mll a6 ni slu[ört det.
- • Spelet ska ha stöd för a6 spela mot datorspelare som slumpar fram sina drag.
- 
- */
+func animateWinningCombination(winningCombination: [Int], game: Game?) {
+    // Base case: If there are no more buttons to animate, exit the recursion
+    guard !winningCombination.isEmpty else {
+        return
+    }
+        
+    let index = winningCombination[0]
+    let button = game?.gameViewController?.getButtonForIndex(index)
+    
+    // Store the original background color and transform
+     let originalBackgroundColor = button?.backgroundColor
+     guard let originalTransform = button?.transform else {
+         // No change, so return the identity transform outside of the guard
+         return
+     }
+    
+    // Animation step
+    UIView.animate(withDuration: 0.6, animations: {
+        // Set the color of the current button
+        button?.setTitleColor(UIColor.black, for: .normal)
+        button?.tintColor = UIColor.cyan
+        
+        // Apply a scale transform to create a bounce effect
+        button?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+    }) { _ in
+        // Restore the original background color and transform
+        button?.backgroundColor = originalBackgroundColor
+        button?.transform = originalTransform
+        
+        // Remove the current button from the list
+        var updatedCombination = winningCombination
+        updatedCombination.removeFirst()
+        
+        // Call the function recursively with the updated list
+        animateWinningCombination(winningCombination: updatedCombination, game: game)
+    }
+}

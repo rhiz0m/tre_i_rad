@@ -10,17 +10,16 @@ import UIKit
 
 class Game {
     
-    var viewController: GameViewController // Declare the property
+        weak var gameViewController: GameViewController?
+        var playerOne: Player
+        var playerTwo: Player
+        
+        init(gameViewController: GameViewController, playerOneName: String, playerTwoName: String) {
+            self.gameViewController = gameViewController
+            self.playerOne = Player(name: playerOneName, mark: "X", wins: 0)
+            self.playerTwo = Player(name: playerTwoName, mark: "O", wins: 0)
+        }
     
-    
-    init(viewController: GameViewController) {
-        // Initialize with the view controller
-        self.viewController = viewController
-    }
-    
-    var playerOne = Player(name: "", mark: "X", wins: 0)
-    
-    var playerTwo = Player(name: "", mark: "O",  wins: 0)
     
     var isPlaying = 1
     var boardArray = ["", "", "", "", "", "", "", "", ""]
@@ -47,27 +46,28 @@ class Game {
         }
 
         // Update UI elements as needed
-        viewController.updateUI()
+        gameViewController?.updateUI()
 
         let hasWon = calculateWinner()
 
         
         if hasWon {
           
+            // Update wins
             if boardArray[index] == playerOne.mark {
                 playerOne.wins += 1
-                viewController.currentPlayerLbl.text = "\(playerOne.name) wins!"
+                gameViewController?.currentPlayerLbl.text = "\(playerOne.name) wins!"
                 
             } else if boardArray[index] == playerTwo.mark {
                 playerTwo.wins += 1
-                viewController.currentPlayerLbl.text = "\(playerTwo.name) wins!"
+                gameViewController?.currentPlayerLbl.text = "\(playerTwo.name) wins!"
             }
             
             totalWins = playerOne.wins + playerTwo.wins + draws
-            viewController.drawsLbl.text = "Draws: \(draws) / \(totalWins)"
+            gameViewController?.drawsLbl.text = "Draws: \(draws) / \(totalWins)"
     
-            viewController.playerOneLbl.text = "Player One. Wins: \(playerOne.wins) / \(totalWins)"
-            viewController.playerTwoLbl.text = "Player Two. Wins: \(playerTwo.wins) / \(totalWins)"
+            gameViewController?.playerOneLbl.text = "\(playerOne.name). Wins: \(playerOne.wins) / \(totalWins)"
+            gameViewController?.playerTwoLbl.text = "\(playerTwo.name). Wins: \(playerTwo.wins) / \(totalWins)"
             
             return // Return immediately after setting the text
             
@@ -75,21 +75,13 @@ class Game {
             // Update draws
             draws += 1
             totalWins = playerOne.wins + playerTwo.wins + draws
-            viewController.drawsLbl.text = "Draws: \(draws) / \(totalWins)"
-            viewController.currentPlayerLbl.text = "No One Wins. It's a draw!"
-            // Update players
-            viewController.playerOneLbl.text = "Player One. Wins: \(playerOne.wins) / \(totalWins)"
-            viewController.playerTwoLbl.text = "Player Two. Wins: \(playerTwo.wins) / \(totalWins)"
-            
+            gameViewController?.drawsLbl.text = "Draws: \(draws) / \(totalWins)"
+            gameViewController?.currentPlayerLbl.text = "No One Wins. It's a draw!"
             return // Return immediately if there's no winner
         } else {
             isPlaying = isPlaying == 1 ? 2 : 1 // toggle players as long as the game keeps going
         }
-        
     }
-    
-    
-    
     
     func calculateWinner() -> Bool {
         let winningCombinations: [[Int]] = [
@@ -105,14 +97,15 @@ class Game {
 
             if boardArray[a] == boardArray[b] && boardArray[b] == boardArray[c] && !boardArray[a].isEmpty {
                 if boardArray[a] == playerOne.mark || boardArray[a] == playerTwo.mark {
-                        animateWinningCombination(winningCombination: combination)
+                    animateWinningCombination(winningCombination: combination, game: self)
                     return true
                 }
             }
         }
         return false
     }
-    
+ 
+  /*
     func animateWinningCombination(winningCombination: [Int]) {
         // Base case: If there are no more buttons to animate, exit the recursion
         guard !winningCombination.isEmpty else {
@@ -120,24 +113,27 @@ class Game {
         }
         
         let index = winningCombination[0]
-        let button = viewController.getButtonForIndex(index)
+        let button = gameViewController?.getButtonForIndex(index)
         
         // Store the original background color and transform
-        let originalBackgroundColor = button.backgroundColor
-        let originalTransform = button.transform
+         let originalBackgroundColor = button?.backgroundColor
+         guard let originalTransform = button?.transform else {
+             // No change, so return the identity transform outside of the guard
+             return
+         }
         
         // Animation step
         UIView.animate(withDuration: 0.6, animations: {
             // Set the color of the current button
-            button.setTitleColor(UIColor.black, for: .normal)
-            button.tintColor = UIColor.cyan
+            button?.setTitleColor(UIColor.black, for: .normal)
+            button?.tintColor = UIColor.cyan
             
             // Apply a scale transform to create a bounce effect
-            button.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+            button?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
         }) { _ in
             // Restore the original background color and transform
-            button.backgroundColor = originalBackgroundColor
-            button.transform = originalTransform
+            button?.backgroundColor = originalBackgroundColor
+            button?.transform = originalTransform
             
             // Remove the current button from the list
             var updatedCombination = winningCombination
@@ -148,7 +144,7 @@ class Game {
         }
     }
 
-
+*/
 
 
 
