@@ -37,24 +37,28 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-  
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
+        
+        game = Game(gameViewController: self, playerOneName: "", playerTwoName: "")
+        
+        if let startViewController = presentingViewController as? StartViewController {
+            game?.playerOne.name = startViewController.playerOneTextFeild.text ?? "Player 1"
+            game?.playerTwo.name = startViewController.playerTwoTextFeild.text ?? "Player 2"
+        }
+        // Trigger the computer player's move if the second player is a computer
+        if game?.playerTwo.name == "Computer" {
+            game?.computersMove()
+            updateUI()
+        }
+        updatePlayerLabels()
+        updateUI()
+        
+ 
+    }
 
-         // Flytta koden från viewDidLoad hit
-         game = Game(gameViewController: self, playerOneName: "", playerTwoName: "")
-         
-         if let startViewController = presentingViewController as? StartViewController {
-             game?.playerOne.name = startViewController.playerOneTextFeild.text ?? "Player 1"
-             game?.playerTwo.name = startViewController.playerTwoTextFeild.text ?? "Player 2"
-         }
-         
-         updatePlayerLabels()
-         updateUI()
-     }
     
     
     

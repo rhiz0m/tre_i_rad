@@ -29,11 +29,10 @@ class Game {
     
     
     func playersMove(index: Int) {
-        
         if calculateWinner() || !boardArray.contains("") {
-               return
-           } // Stop the game
-        
+            return // Stop the game
+        }
+
         guard index >= 0 && index < boardArray.count && boardArray[index] == "" else {
             // Cell is not empty or index is out of bounds
             return
@@ -41,8 +40,12 @@ class Game {
 
         if isPlaying == 1 {
             boardArray[index] = playerOne.mark
-        } else {
-            boardArray[index] = playerTwo.mark
+        } else if isPlaying == 2 {
+            if playerTwo.name == "Computer" {
+                computersMove()
+            } else {
+                boardArray[index] = playerTwo.mark
+            }
         }
 
         // Update UI elements as needed
@@ -50,27 +53,22 @@ class Game {
 
         let hasWon = calculateWinner()
 
-        
         if hasWon {
-          
             // Update wins
             if boardArray[index] == playerOne.mark {
                 playerOne.wins += 1
                 gameViewController?.currentPlayerLbl.text = "\(playerOne.name) wins!"
-                
             } else if boardArray[index] == playerTwo.mark {
                 playerTwo.wins += 1
                 gameViewController?.currentPlayerLbl.text = "\(playerTwo.name) wins!"
             }
-            
+
             totalWins = playerOne.wins + playerTwo.wins + draws
             gameViewController?.drawsLbl.text = "Draws: \(draws) / \(totalWins)"
-    
             gameViewController?.playerOneLbl.text = "\(playerOne.name). Wins: \(playerOne.wins) / \(totalWins)"
             gameViewController?.playerTwoLbl.text = "\(playerTwo.name). Wins: \(playerTwo.wins) / \(totalWins)"
-            
+
             return // Return immediately after setting the text
-            
         } else if !boardArray.contains("") {
             // Update draws
             draws += 1
@@ -79,9 +77,11 @@ class Game {
             gameViewController?.currentPlayerLbl.text = "No One Wins. It's a draw!"
             return // Return immediately if there's no winner
         } else {
-            isPlaying = isPlaying == 1 ? 2 : 1 // toggle players as long as the game keeps going
+            isPlaying = isPlaying == 1 ? 2 : 1 // Toggle players as long as the game keeps going
         }
+        
     }
+
     
     func calculateWinner() -> Bool {
         let winningCombinations: [[Int]] = [
@@ -107,9 +107,44 @@ class Game {
  
   
 
-    func AI() {
+    func computersMove() {
+        guard playerTwo.name == "Computer" else {
+            // PlayerTwo is not a computer, so return without making a move
+            return
+        }
         
+        guard !calculateWinner() else {
+            // Game is already won, AI doesn't need to make a move
+            return
+        }
+        
+        // Find all available empty cells
+        let availableCells = boardArray.indices.filter { boardArray[$0].isEmpty }
+        
+        guard !availableCells.isEmpty else {
+            // The board is full, no more moves to make
+            return
+        }
+        
+        // Choose a random empty cell
+        let randomIndex = Int(arc4random_uniform(UInt32(availableCells.count)))
+        let selectedCell = availableCells[randomIndex]
+        
+        // Make the AI's move by directly updating the boardArray
+        if isPlaying == 2 {
+            boardArray[selectedCell] = playerTwo.mark
+        }
+        
+       
+        
+        // Check for a win or draw and update game state
+        let hasWon = calculateWinner()
+        
+        if hasWon {
+            // Handle win logic here
+        } else if !boardArray.contains("") {
+            // Handle draw logic here
+        }
     }
-
 
 }

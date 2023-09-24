@@ -9,12 +9,16 @@ import UIKit
 
 class StartViewController: UIViewController {
     
-    
+    // Labels
     @IBOutlet weak var topInfoLbl: UILabel!
     
+    // Textfeilds
     @IBOutlet weak var playerOneTextFeild: UITextField!
     @IBOutlet weak var playerTwoTextFeild: UITextField!
     
+    // Buttons
+    @IBOutlet var humanPlayerBtn: UIButton!
+    @IBOutlet var computerPlayerBtn: UIButton!
     @IBOutlet weak var startGameBtn: UIButton!
     
     var game: Game?
@@ -23,11 +27,26 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        playerTwoTextFeild.isHidden = true
     }
     
-
+    @IBAction func onHumanPlayer(_ sender: UIButton) {
+        if playerTwoTextFeild.isHidden {
+            playerTwoTextFeild.isHidden = false
+            playerTwoTextFeild.text = ""
+        } else {
+            playerTwoTextFeild.isHidden = true
+        }
+      
+    }
+    
+    @IBAction func onComputerVsHuman(_ sender: UIButton) {
+        playerTwoTextFeild.isHidden = false
+        playerTwoTextFeild.text = "Computer"
+    }
+    
+    
     @IBAction func onStartGame(_ sender: UIButton) {
         
         if let playerOneText = playerOneTextFeild.text, !playerOneText.isEmpty,
