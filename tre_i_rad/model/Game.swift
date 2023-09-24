@@ -105,63 +105,8 @@ class Game {
         return false
     }
  
-  /*
-    func animateWinningCombination(winningCombination: [Int]) {
-        // Base case: If there are no more buttons to animate, exit the recursion
-        guard !winningCombination.isEmpty else {
-            return
-        }
-        
-        let index = winningCombination[0]
-        let button = gameViewController?.getButtonForIndex(index)
-        
-        // Store the original background color and transform
-         let originalBackgroundColor = button?.backgroundColor
-         guard let originalTransform = button?.transform else {
-             // No change, so return the identity transform outside of the guard
-             return
-         }
-        
-        // Animation step
-        UIView.animate(withDuration: 0.6, animations: {
-            // Set the color of the current button
-            button?.setTitleColor(UIColor.black, for: .normal)
-            button?.tintColor = UIColor.cyan
-            
-            // Apply a scale transform to create a bounce effect
-            button?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-        }) { _ in
-            // Restore the original background color and transform
-            button?.backgroundColor = originalBackgroundColor
-            button?.transform = originalTransform
-            
-            // Remove the current button from the list
-            var updatedCombination = winningCombination
-            updatedCombination.removeFirst()
-            
-            // Call the function recursively with the updated list
-            self.animateWinningCombination(winningCombination: updatedCombination)
-        }
-    }
+  
 
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     func AI() {
         
     }

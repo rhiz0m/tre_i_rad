@@ -154,7 +154,9 @@ class GameViewController: UIViewController {
     
     
     @IBAction func resetActionBtn(_ sender: UIButton) {
+        
        reset()
+        
         game?.playerOne.wins = 0
         game?.playerTwo.wins = 0
         game?.totalWins = 0
@@ -162,6 +164,8 @@ class GameViewController: UIViewController {
         currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing"
         playerOneLbl.text = "\(game?.playerOne.name ?? ""). Wins: 0 / 0"
         playerTwoLbl.text = "\(game?.playerTwo.name ?? "") Two. Wins: 0 / 0"
+        
+        //dismiss(animated: true, completion: nil)
     
     }
 }
