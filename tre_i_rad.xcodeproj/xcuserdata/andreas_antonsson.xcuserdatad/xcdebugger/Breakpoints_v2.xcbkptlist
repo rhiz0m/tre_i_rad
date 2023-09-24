@@ -52,5 +52,113 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47A647F7-E235-48E8-89F8-4EFF5CA496F2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tre_i_rad/GameViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "GameViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "47A647F7-E235-48E8-89F8-4EFF5CA496F2 - 187e1606d1c93f63"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.GameViewController.c1_btn.getter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "47A647F7-E235-48E8-89F8-4EFF5CA496F2 - da1496d0f0ff6717"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.GameViewController.c1_btn.setter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "47A647F7-E235-48E8-89F8-4EFF5CA496F2 - f10a86b0ba065164"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.GameViewController.c1_btn.modify : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "47A647F7-E235-48E8-89F8-4EFF5CA496F2 - cad7b99cbbbabd6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.GameViewController.c1_btn.modify : Swift.Optional&lt;__C.UIButton&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "47A647F7-E235-48E8-89F8-4EFF5CA496F2 - b38cca17865c114d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.GameViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; tre_i_rad.GameViewController"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "732">
+               </Location>
+               <Location
+                  uuid = "47A647F7-E235-48E8-89F8-4EFF5CA496F2 - c26074010c3f11f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tre_i_rad.GameViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;tre_i_rad.GameViewController&gt;"
+                  moduleName = "tre_i_rad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreas_antonsson/IOS/tre_i_rad/tre_i_rad/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "708">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
