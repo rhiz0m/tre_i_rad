@@ -12,7 +12,7 @@
         <!--Start View Controller-->
         <scene sceneID="hrR-de-wet">
             <objects>
-                <viewController id="ucQ-9J-dhS" customClass="StartViewController" customModule="tre_i_rad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewController" id="ucQ-9J-dhS" customClass="StartViewController" customModule="tre_i_rad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uYp-YB-wga">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,18 +131,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERQ-Vs-bfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-782" y="-39"/>
+            <point key="canvasLocation" x="-14.503816793893129" y="-12.67605633802817"/>
         </scene>
         <!--GameViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="GameViewController" customClass="GameViewController" customModule="tre_i_rad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" id="BYZ-38-t0r" userLabel="GameViewController" customClass="GameViewController" customModule="tre_i_rad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ypq-cb-wqo">
-                                <rect key="frame" x="0.0" y="50" width="393" height="680"/>
+                                <rect key="frame" x="0.0" y="30" width="393" height="680"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="¬ Tic T▲c ToΣ ⌐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6p-AP-C8o">
                                         <rect key="frame" x="81.666666666666671" y="0.0" width="229.66666666666663" height="30"/>
@@ -434,7 +434,7 @@
                         <constraints>
                             <constraint firstItem="ypq-cb-wqo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="09D-Zn-eHP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="right" secondItem="ypq-cb-wqo" secondAttribute="rightMargin" id="WyN-Cg-T2a"/>
-                            <constraint firstItem="ypq-cb-wqo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="qv2-8h-yCg"/>
+                            <constraint firstItem="ypq-cb-wqo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="qv2-8h-yCg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9BR-PQ-lVj"/>
@@ -459,7 +459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="269" y="-39"/>
+            <point key="canvasLocation" x="1057" y="-30"/>
         </scene>
     </scenes>
     <resources>

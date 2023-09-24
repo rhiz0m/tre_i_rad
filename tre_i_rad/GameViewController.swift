@@ -37,20 +37,24 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Create the Game instance with player names from StartViewController
-        game = Game(gameViewController: self, playerOneName: "", playerTwoName: "")
-        
-        // Now you can set the player names from StartViewController
-        if let startViewController = presentingViewController as? StartViewController {
-            game?.playerOne.name = startViewController.playerOneTextFeild.text ?? "Player 1"
-            game?.playerTwo.name = startViewController.playerTwoTextFeild.text ?? "Player 2"
-        }
-        
-        // Update the player labels
-        updatePlayerLabels()
-        updateUI()
+
   
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+
+         // Flytta koden från viewDidLoad hit
+         game = Game(gameViewController: self, playerOneName: "", playerTwoName: "")
+         
+         if let startViewController = presentingViewController as? StartViewController {
+             game?.playerOne.name = startViewController.playerOneTextFeild.text ?? "Player 1"
+             game?.playerTwo.name = startViewController.playerTwoTextFeild.text ?? "Player 2"
+         }
+         
+         updatePlayerLabels()
+         updateUI()
+     }
     
     
     
@@ -154,21 +158,19 @@ class GameViewController: UIViewController {
     
     
     @IBAction func resetActionBtn(_ sender: UIButton) {
-        
-       reset()
-        
-        game?.playerOne.wins = 0
-        game?.playerTwo.wins = 0
-        game?.totalWins = 0
-        drawsLbl.text = "Draws: 0 / 0 "
-        currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing"
-        playerOneLbl.text = "\(game?.playerOne.name ?? ""). Wins: 0 / 0"
-        playerTwoLbl.text = "\(game?.playerTwo.name ?? "") Two. Wins: 0 / 0"
-        
-        //dismiss(animated: true, completion: nil)
-    
+            reset()
+            
+            game?.playerOne.wins = 0
+            game?.playerTwo.wins = 0
+            game?.totalWins = 0
+            drawsLbl.text = "Draws: 0 / 0 "
+            currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing"
+            playerOneLbl.text = "\(game?.playerOne.name ?? ""). Wins: 0 / 0"
+            playerTwoLbl.text = "\(game?.playerTwo.name ?? "") Two. Wins: 0 / 0"
     }
 }
+
+
 
 func animateWinningCombination(winningCombination: [Int], game: Game?) {
     // Base case: If there are no more buttons to animate, exit the recursion

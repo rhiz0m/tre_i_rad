@@ -42,14 +42,12 @@ class StartViewController: UIViewController {
         }
     }
 
-           override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-               if segue.identifier == toGameScreen {
-                   
-                   _ = segue.destination as! GameViewController
-                   
-                   // Hantera övergång till ett förbikommet läge (passed)
-                   print("The user have entered the GameScreen!")
-               }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toGameScreen {
+            if let gameViewController = segue.destination as? GameViewController {
+                gameViewController.game = game
+                print("The user has entered the GameScreen!")
+            }
+        }
     }
-
 }
