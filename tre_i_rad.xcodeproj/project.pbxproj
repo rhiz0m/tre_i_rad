@@ -83,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE2293922AC1A50D00E2901A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE8282912ABEF2350009DAD4 /* StartViewController.swift */,
+				FE4002E02AA5BB7F00A6862D /* GameViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		FE4002D02AA5BB7F00A6862D = {
 			isa = PBXGroup;
 			children = (
@@ -106,11 +115,10 @@
 		FE4002DB2AA5BB7F00A6862D /* tre_i_rad */ = {
 			isa = PBXGroup;
 			children = (
+				FE2293922AC1A50D00E2901A /* Controllers */,
 				FE7BABC12AAF82B2006D0CA5 /* model */,
 				FE4002DC2AA5BB7F00A6862D /* AppDelegate.swift */,
 				FE4002DE2AA5BB7F00A6862D /* SceneDelegate.swift */,
-				FE4002E02AA5BB7F00A6862D /* GameViewController.swift */,
-				FE8282912ABEF2350009DAD4 /* StartViewController.swift */,
 				FE4002E22AA5BB7F00A6862D /* Main.storyboard */,
 				FE4002E72AA5BB8000A6862D /* LaunchScreen.storyboard */,
 				FE4002EA2AA5BB8000A6862D /* Info.plist */,

@@ -187,7 +187,7 @@ func animateWinningCombination(winningCombination: [Int], game: Game?) {
     
     // Animation step
     UIView.animate(withDuration: 0.6, animations: {
-        // Set the color of the current button
+
         button?.setTitleColor(UIColor.black, for: .normal)
         button?.tintColor = UIColor.cyan
         
@@ -206,3 +206,4 @@ func animateWinningCombination(winningCombination: [Int], game: Game?) {
         animateWinningCombination(winningCombination: updatedCombination, game: game)
     }
 }
+

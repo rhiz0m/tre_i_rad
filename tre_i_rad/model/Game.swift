@@ -10,7 +10,7 @@ import UIKit
 
 class Game {
     
-        weak var gameViewController: GameViewController?
+        var gameViewController: GameViewController?
         var playerOne: Player
         var playerTwo: Player
         
