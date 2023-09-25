@@ -20,14 +20,12 @@ class StartViewController: UIViewController {
     @IBOutlet var humanPlayerBtn: UIButton!
     @IBOutlet var computerPlayerBtn: UIButton!
     @IBOutlet weak var startGameBtn: UIButton!
-    
-    var game: Game?
+
     
     let toGameScreen = "toGameScreen" // Single source of truth
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         playerTwoTextFeild.isHidden = true
     }
     
@@ -38,7 +36,7 @@ class StartViewController: UIViewController {
         } else {
             playerTwoTextFeild.isHidden = true
         }
-      
+        
     }
     
     @IBAction func onComputerVsHuman(_ sender: UIButton) {
@@ -48,25 +46,34 @@ class StartViewController: UIViewController {
     
     
     @IBAction func onStartGame(_ sender: UIButton) {
-        
         if let playerOneText = playerOneTextFeild.text, !playerOneText.isEmpty,
            let playerTwoText = playerTwoTextFeild.text, !playerTwoText.isEmpty {
-            game?.playerOne.name = playerOneText
-            game?.playerTwo.name = playerTwoText
             
-            
-            performSegue(withIdentifier: toGameScreen, sender: self)
+            if let gameViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController {
+                GameManager.shared.createGame(playerOneName: playerOneText, playerTwoName: playerTwoText, gameViewController: gameViewController)
+                
+                performSegue(withIdentifier: toGameScreen, sender: self)
+            }
         } else {
             topInfoLbl.text = "Both player names are required!"
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == toGameScreen {
             if let gameViewController = segue.destination as? GameViewController {
-                gameViewController.game = game
-                print("The user has entered the GameScreen!")
+                if let game = GameManager.shared.getGame() {
+                               gameViewController.game = game
+                               print("The user has entered the GameScreen!")
+                           } else {
+                    print("Error: Game instance is nil.")
+                }
             }
         }
     }
 }
+
+
+
+
+

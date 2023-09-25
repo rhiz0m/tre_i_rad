@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE22938F2AC181F400E2901A /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE22938E2AC181F400E2901A /* GameManager.swift */; };
 		FE4002DD2AA5BB7F00A6862D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4002DC2AA5BB7F00A6862D /* AppDelegate.swift */; };
 		FE4002DF2AA5BB7F00A6862D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4002DE2AA5BB7F00A6862D /* SceneDelegate.swift */; };
 		FE4002E12AA5BB7F00A6862D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4002E02AA5BB7F00A6862D /* GameViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE22938E2AC181F400E2901A /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		FE4002D92AA5BB7F00A6862D /* tre_i_rad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tre_i_rad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE4002DC2AA5BB7F00A6862D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE4002DE2AA5BB7F00A6862D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				FE62FD142AB08CDF0061DA21 /* Game.swift */,
 				FE62FD162AB08D730061DA21 /* Player.swift */,
+				FE22938E2AC181F400E2901A /* GameManager.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				FE62FD152AB08CDF0061DA21 /* Game.swift in Sources */,
 				FE4002E12AA5BB7F00A6862D /* GameViewController.swift in Sources */,
 				FE4002DD2AA5BB7F00A6862D /* AppDelegate.swift in Sources */,
+				FE22938F2AC181F400E2901A /* GameManager.swift in Sources */,
 				FE62FD172AB08D730061DA21 /* Player.swift in Sources */,
 				FE4002DF2AA5BB7F00A6862D /* SceneDelegate.swift in Sources */,
 				FE8282922ABEF2350009DAD4 /* StartViewController.swift in Sources */,

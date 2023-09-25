@@ -32,58 +32,52 @@ class GameViewController: UIViewController {
     @IBOutlet weak var c2_btn: UIButton!
     @IBOutlet weak var c3_btn: UIButton!
     
-    var game: Game?
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    var game: Game?
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
-        game = Game(gameViewController: self, playerOneName: "", playerTwoName: "")
+        GameManager.shared.createGame(playerOneName: "Player 1", playerTwoName: "Player 2", gameViewController: self)
         
         if let startViewController = presentingViewController as? StartViewController {
-            game?.playerOne.name = startViewController.playerOneTextFeild.text ?? "Player 1"
-            game?.playerTwo.name = startViewController.playerTwoTextFeild.text ?? "Player 2"
+            GameManager.shared.setPlayerNames(playerOneName: startViewController.playerOneTextFeild.text ?? "Player 1", playerTwoName: startViewController.playerTwoTextFeild.text ?? "Player 2")
         }
-        // Trigger the computer player's move if the second player is a computer
-        if game?.playerTwo.name == "Computer" {
-            game?.computersMove()
+        
+        if GameManager.shared.isComputerPlayer() {
+            GameManager.shared.computersMove()
             updateUI()
         }
         updatePlayerLabels()
         updateUI()
-        
- 
     }
 
     
-    
-    
-    
     func updatePlayerLabels() {
-        playerOneLbl.text = "\(game?.playerOne.name ?? "Player 1"). Wins: \(game?.playerOne.wins ?? 0) / \(game?.totalWins ?? 0)"
-        playerTwoLbl.text = "\(game?.playerTwo.name ?? "Player 2"). Wins: \(game?.playerTwo.wins ?? 0) / \(game?.totalWins ?? 0)"
+        playerOneLbl.text = "\(GameManager.shared.getGame()?.playerOne.name ?? "Player 1"). Wins: \(GameManager.shared.getGame()?.playerOne.wins ?? 0) / \(GameManager.shared.getGame()?.totalWins ?? 0)"
+               playerTwoLbl.text = "\(GameManager.shared.getGame()?.playerTwo.name ?? "Player 2"). Wins: \(GameManager.shared.getGame()?.playerTwo.wins ?? 0) / \(GameManager.shared.getGame()?.totalWins ?? 0)"
     }
         
     func updateUI() {
                 
-        // Update player labels
-        if game?.isPlaying == 1 {
-            currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing!"
-            
+        if let game = GameManager.shared.getGame() {
+            // Update player labels
+            if game.isPlaying == 1 {
+                currentPlayerLbl.text = "\(game.playerOne.name) is now playing!"
+            } else {
+                currentPlayerLbl.text = "\(game.playerTwo.name) is now playing!"
+            }
 
-        } else {
-            currentPlayerLbl.text = "\(game?.playerTwo.name ?? "") is now playing!"
-            
-        }
-
-        // Update button titles
-        for (index, title) in game?.boardArray.enumerated() ?? [].enumerated() {
-            let button = getButtonForIndex(index)
-            button.setTitle(title, for: .normal)
+            // Update button titles
+            for (index, title) in game.boardArray.enumerated() {
+                let button = getButtonForIndex(index)
+                button.setTitle(title, for: .normal)
+            }
         }
     }
     
@@ -104,55 +98,55 @@ class GameViewController: UIViewController {
     }
     
     func reset() {
-        game?.boardArray = [
-            "", "", "", "", "", "", "", "", ""]
-        // Återställ knapparna
-        for index in 0..<9 {
-            let button = getButtonForIndex(index)
-            button.setTitleColor(UIColor.white, for: .normal)
-            button.tintColor = UIColor.black
-        }
-        
-        updateUI()
-        
+        GameManager.shared.getGame()?.boardArray = [
+             "", "", "", "", "", "", "", "", ""]
+         // Återställ knapparna
+         for index in 0..<9 {
+             let button = getButtonForIndex(index)
+             button.setTitleColor(UIColor.white, for: .normal)
+             button.tintColor = UIColor.black
+         }
+         
+         updateUI()
     }
 
     // Action Buttons
     
     @IBAction func a1ActionBtn(_ sender: Any) {
-        game?.playersMove(index: 0)
+        GameManager.shared.getGame()?.playersMove(index: 0)
+        updateUI()
     }
     
     @IBAction func a2ActionBtn(_ sender: Any) {
-        game?.playersMove(index: 1)
+        GameManager.shared.getGame()?.playersMove(index: 1)
     }
     
     @IBAction func a3ActionBtn(_ sender: Any) {
-        game?.playersMove(index: 2) // Pass the index of the button clicked
+        GameManager.shared.getGame()?.playersMove(index: 2) // Pass the index of the button clicked
     }
     
     @IBAction func b1ActionBtn(_ sender: Any) {
-        game?.playersMove(index: 3)
+        GameManager.shared.getGame()?.playersMove(index: 3)
     }
     
     @IBAction func b2ActionBtn(_ sender: UIButton) {
-        game?.playersMove(index: 4)
+        GameManager.shared.getGame()?.playersMove(index: 4)
     }
     
     @IBAction func b3ActionBtn(_ sender: Any) {
-        game?.playersMove(index: 5)
+        GameManager.shared.getGame()?.playersMove(index: 5)
     }
     
     @IBAction func c1ActionBtn(_ sender: Any) {
-        game?.playersMove(index: 6)
+        GameManager.shared.getGame()?.playersMove(index: 6)
     }
     
     @IBAction func c2ActionBtn(_ sender: Any) {
-        game?.playersMove(index: 7)
+        GameManager.shared.getGame()?.playersMove(index: 7)
     }
     
     @IBAction func c3ActionBtn(_ sender: Any) {
-        game?.playersMove(index: 8)
+        GameManager.shared.getGame()?.playersMove(index: 8)
     }
     
     @IBAction func rematchActionBtn(_ sender: UIButton) {
@@ -164,16 +158,15 @@ class GameViewController: UIViewController {
     @IBAction func resetActionBtn(_ sender: UIButton) {
             reset()
             
-            game?.playerOne.wins = 0
-            game?.playerTwo.wins = 0
-            game?.totalWins = 0
+        GameManager.shared.getGame()?.playerOne.wins = 0
+        GameManager.shared.getGame()?.playerTwo.wins = 0
+        GameManager.shared.getGame()?.totalWins = 0
             drawsLbl.text = "Draws: 0 / 0 "
-            currentPlayerLbl.text = "\(game?.playerOne.name ?? "") is now playing"
-            playerOneLbl.text = "\(game?.playerOne.name ?? ""). Wins: 0 / 0"
-            playerTwoLbl.text = "\(game?.playerTwo.name ?? "") Two. Wins: 0 / 0"
+        currentPlayerLbl.text = "\(GameManager.shared.getGame()?.playerOne.name ?? "") is now playing"
+        playerOneLbl.text = "\(GameManager.shared.getGame()?.playerOne.name ?? ""). Wins: 0 / 0"
+        playerTwoLbl.text = "\(GameManager.shared.getGame()?.playerTwo.name ?? "") Two. Wins: 0 / 0"
     }
 }
-
 
 
 func animateWinningCombination(winningCombination: [Int], game: Game?) {
