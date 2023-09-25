@@ -37,15 +37,19 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // Instance of Game class
     var game: Game?
     
     override func viewWillAppear(_ animated: Bool) {
         
+        // Can be called several times in the viewControllers lifecycle. Ex, Used for: update the screens data, animations.
         super.viewWillAppear(animated)
         
         GameManager.shared.createGame(playerOneName: "Player 1", playerTwoName: "Player 2", gameViewController: self)
         
         if let startViewController = presentingViewController as? StartViewController {
+            
+            // Get the textfeildNames from startViewController, then set the names
             GameManager.shared.setPlayerNames(playerOneName: startViewController.playerOneTextFeild.text ?? "Player 1", playerTwoName: startViewController.playerTwoTextFeild.text ?? "Player 2")
         }
         
@@ -59,21 +63,23 @@ class GameViewController: UIViewController {
 
     
     func updatePlayerLabels() {
+        
+        // If the game exists, then set the players name, else what after ??
         playerOneLbl.text = "\(GameManager.shared.getGame()?.playerOne.name ?? "Player 1"). Wins: \(GameManager.shared.getGame()?.playerOne.wins ?? 0) / \(GameManager.shared.getGame()?.totalWins ?? 0)"
                playerTwoLbl.text = "\(GameManager.shared.getGame()?.playerTwo.name ?? "Player 2"). Wins: \(GameManager.shared.getGame()?.playerTwo.wins ?? 0) / \(GameManager.shared.getGame()?.totalWins ?? 0)"
     }
         
     func updateUI() {
-                
+         // If the game exists
         if let game = GameManager.shared.getGame() {
-            // Update player labels
+            // Update the current player labels
             if game.isPlaying == 1 {
                 currentPlayerLbl.text = "\(game.playerOne.name) is now playing!"
             } else {
                 currentPlayerLbl.text = "\(game.playerTwo.name) is now playing!"
             }
 
-            // Update button titles
+            // Looping through the boardarray and then Update the button titles. Enumerated returns a sequence of pairs, here index & title.
             for (index, title) in game.boardArray.enumerated() {
                 let button = getButtonForIndex(index)
                 button.setTitle(title, for: .normal)
@@ -170,31 +176,31 @@ class GameViewController: UIViewController {
 
 
 func animateWinningCombination(winningCombination: [Int], game: Game?) {
-    // Base case: If there are no more buttons to animate, exit the recursion
+    // Check that winningCombo is not empty
     guard !winningCombination.isEmpty else {
         return
     }
         
+    // Connect button with index
     let index = winningCombination[0]
     let button = game?.gameViewController?.getButtonForIndex(index)
     
     // Store the original background color and transform
      let originalBackgroundColor = button?.backgroundColor
      guard let originalTransform = button?.transform else {
-         // No change, so return the identity transform outside of the guard
          return
      }
     
-    // Animation step
+    // Animation
     UIView.animate(withDuration: 0.6, animations: {
 
         button?.setTitleColor(UIColor.black, for: .normal)
         button?.tintColor = UIColor.cyan
         
-        // Apply a scale transform to create a bounce effect
+        // scale up the button and set it back to normal size
         button?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
     }) { _ in
-        // Restore the original background color and transform
+        // Completion closure. Restore the original background color and transform
         button?.backgroundColor = originalBackgroundColor
         button?.transform = originalTransform
         
@@ -202,7 +208,8 @@ func animateWinningCombination(winningCombination: [Int], game: Game?) {
         var updatedCombination = winningCombination
         updatedCombination.removeFirst()
         
-        // Call the function recursively with the updated list
+        // Calls the function recursively (one button at time). Then
+        //updating the list/updatedCombination
         animateWinningCombination(winningCombination: updatedCombination, game: game)
     }
 }

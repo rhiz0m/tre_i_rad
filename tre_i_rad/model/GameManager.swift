@@ -8,15 +8,18 @@
 import Foundation
 import UIKit
 
-// Singleton to prevent
+// Singleton - creates only one instance / for the shared to the entire app
 class GameManager {
     static let shared = GameManager()
 
     private var game: Game?
 
+    // Private init prevents more instances of gameManager
     private init() {}
 
     func createGame(playerOneName: String, playerTwoName: String, gameViewController: GameViewController) {
+        
+        // method to create new games players and an instance of gameViewController to show game on the screen
         game = Game(gameViewController: gameViewController, playerOneName: playerOneName, playerTwoName: playerTwoName)
     }
 
@@ -24,7 +27,7 @@ class GameManager {
         return game
     }
 
-    // Add methods to interact with the Game instance as needed
+   
     func setPlayerNames(playerOneName: String, playerTwoName: String) {
         game?.playerOne.name = playerOneName
         game?.playerTwo.name = playerTwoName

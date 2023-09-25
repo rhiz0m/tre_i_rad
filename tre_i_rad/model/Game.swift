@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 class Game {
-    
-        var gameViewController: GameViewController?
+        
+        var gameViewController: GameViewController? // a property that stores a reference to the class GameViewController. Instance - graphical view
         var playerOne: Player
         var playerTwo: Player
         
+    // Init constructor. Creating a new instance of Game
         init(gameViewController: GameViewController, playerOneName: String, playerTwoName: String) {
             self.gameViewController = gameViewController
             self.playerOne = Player(name: playerOneName, mark: "X", wins: 0)
@@ -30,7 +31,7 @@ class Game {
     
     func playersMove(index: Int) {
         if calculateWinner() || !boardArray.contains("") {
-            return // Stop the game
+            return // Stop the game if we have a win or no spots left on board
         }
 
         guard index >= 0 && index < boardArray.count && boardArray[index] == "" else {
@@ -109,7 +110,6 @@ class Game {
 
     func computersMove() {
         guard playerTwo.name == "Computer" else {
-            // PlayerTwo is not a computer, so return without making a move
             return
         }
         
@@ -118,7 +118,7 @@ class Game {
             return
         }
         
-        // Find all available empty cells
+        // Find all available empty cells on the board
         let availableCells = boardArray.indices.filter { boardArray[$0].isEmpty }
         
         guard !availableCells.isEmpty else {
@@ -126,7 +126,7 @@ class Game {
             return
         }
         
-        // Choose a random empty cell
+        // Choose a random empty cell. [0, availableCells.count)
         let randomIndex = Int(arc4random_uniform(UInt32(availableCells.count)))
         let selectedCell = availableCells[randomIndex]
         
@@ -135,16 +135,6 @@ class Game {
             boardArray[selectedCell] = playerTwo.mark
         }
         
-       
-        
-        // Check for a win or draw and update game state
-        let hasWon = calculateWinner()
-        
-        if hasWon {
-            // Handle win logic here
-        } else if !boardArray.contains("") {
-            // Handle draw logic here
-        }
     }
 
 }
