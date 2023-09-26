@@ -114,6 +114,7 @@ class GameViewController: UIViewController {
          }
          
          updateUI()
+        
     }
 
     // Action Buttons
@@ -168,9 +169,17 @@ class GameViewController: UIViewController {
         GameManager.shared.getGame()?.playerTwo.wins = 0
         GameManager.shared.getGame()?.totalWins = 0
             drawsLbl.text = "Draws: 0 / 0 "
-        currentPlayerLbl.text = "\(GameManager.shared.getGame()?.playerOne.name ?? "") is now playing"
+        currentPlayerLbl.text = "\(GameManager.shared.getGame()?.playerOne.name ?? "") is now playing!"
         playerOneLbl.text = "\(GameManager.shared.getGame()?.playerOne.name ?? ""). Wins: 0 / 0"
-        playerTwoLbl.text = "\(GameManager.shared.getGame()?.playerTwo.name ?? "") Two. Wins: 0 / 0"
+        playerTwoLbl.text = "\(GameManager.shared.getGame()?.playerTwo.name ?? ""). Wins: 0 / 0"
+        
+        // After reset all values. Create new instance: StartViewController
+         if let startViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StartViewController") as? StartViewController {
+             // transition animation
+             startViewController.modalTransitionStyle = .crossDissolve
+             // Show and enter StartViewController
+             present(startViewController, animated: true, completion: nil)
+         }
     }
 }
 
